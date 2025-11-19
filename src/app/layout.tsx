@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import { Providers } from "@/components/providers";
 
+import { TRPCReactProvider } from "@/lib/trpc/client";
+
 import { cn } from "@/utils/cn";
 
 import "@/styles/globals.css";
@@ -36,12 +38,14 @@ export default function RootLayout({
           geistMono.variable
         )}
       >
-        <Providers>
-          <div className="flex h-12 items-center border-b px-4">
-            <p>placeholder navbar</p>
-          </div>
-          {children}
-        </Providers>
+        <TRPCReactProvider>
+          <Providers>
+            <div className="flex h-12 items-center border-b px-4">
+              <p>placeholder navbar</p>
+            </div>
+            {children}
+          </Providers>
+        </TRPCReactProvider>
       </body>
     </html>
   );
