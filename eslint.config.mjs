@@ -32,7 +32,7 @@ const eslintConfig = defineConfig([
           mode: "full",
           type: "shared",
           pattern: [
-            // "src/components/**/*",
+            "src/components/**/*",
             // "src/config/**/*",
             // "src/constants/**/*",
             // "src/data/**/*",
@@ -44,7 +44,7 @@ const eslintConfig = defineConfig([
             // "src/stores/**/*",
             "src/styles/**/*",
             // "src/types/**/*",
-            // "src/utils/**/*",
+            "src/utils/**/*",
           ],
         },
         {
