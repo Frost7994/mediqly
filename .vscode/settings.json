@@ -1,0 +1,24 @@
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "always",
+        "source.organizeImports": "always"
+    },
+    "editor.formatOnSave": true,
+    "files.associations": {
+        "*.css": "tailwindcss"
+    },
+    "workbench.editor.customLabels.patterns": {
+        "**/app/**/page.tsx": "${dirname} - page",
+        "**/app/**/layout.tsx": "${dirname} - layout",
+        "**/components/**/index.tsx": "${dirname} - component"
+    },
+    "tailwindCSS.includeLanguages": {
+        "html": "html",
+        "javascript": "javascript",
+        "typescript": "typescript",
+        "css": "css",
+    },
+    "editor.quickSuggestions": {
+        "strings": true
+    }
+}
