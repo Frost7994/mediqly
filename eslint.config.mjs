@@ -36,7 +36,7 @@ const eslintConfig = defineConfig([
             // "src/config/**/*",
             // "src/constants/**/*",
             // "src/data/**/*",
-            // "src/env/**/*",
+            "src/env/**/*",
             // "src/features/**/*",
             // "src/hooks/**/*",
             // "src/lib/**/*",
