@@ -52,7 +52,7 @@ const auth = betterAuth({
 });
 
 const getSession = async () => {
-  auth.api.getSession({
+  return auth.api.getSession({
     headers: await headers(),
   });
 };
