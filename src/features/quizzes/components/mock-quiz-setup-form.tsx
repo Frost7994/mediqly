@@ -1,8 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
+import { MOCK } from "@/constants";
 import { categories } from "@/data";
+import { shuffleArray, sleep, toast } from "@/utils";
 import { InfoIcon, MinusIcon, PlusIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -23,17 +26,65 @@ import {
   mockQuizFormDefaultValues as defaultValues,
   mockQuizFormSchema as schema,
 } from "@/features/quizzes/schemas";
+import { useQuizStore } from "@/features/quizzes/stores";
+
+import { useTRPCClient } from "@/lib/trpc/client";
 
 import { useAppForm } from "@/hooks/forms";
 
 function MockQuizSetupForm() {
+  // store actions
+  const handleStartClick = useQuizStore((state) => state.handleStartClick);
+
+  // router destructure
+  const { push } = useRouter();
+
+  const trpcClient = useTRPCClient();
+
   // form methods
   const form = useAppForm({
     defaultValues: defaultValues satisfies FormData as FormData,
     validators: {
       onSubmit: schema,
     },
-    onSubmit: async ({ value }) => {},
+    onSubmit: async ({ value }) => {
+      // simulate form submission
+      await sleep({ ms: 800 });
+
+      //+ TODO: get questions from API using TRPC
+      const questions = await trpcClient.questions.read.query({
+        categories: value.categories.map((cat) => ({ id: cat })),
+      });
+
+      const formattedQuestions = shuffleArray(questions)
+        .slice(0, value.numberOfQuestions)
+        .map((q) => ({
+          ...q,
+          options: shuffleArray(q.options),
+        }));
+
+      // set the store state
+      await handleStartClick({
+        type: MOCK,
+        categories: value.categories.map((cat) => ({ id: cat })),
+        questions: formattedQuestions,
+
+        timerActive: false,
+        nudgesActive: true,
+        promptsActive: true,
+      });
+
+      // show toast
+      toast({
+        message: `Mock quiz started with ${value.categories.length} categor${value.categories.length !== 1 ? "ies" : "y"} and ${value.numberOfQuestions} questions! Redirecting..`,
+      });
+
+      // redirect to mock quiz page
+      push("/quiz");
+
+      // reset form
+      form.reset();
+    },
   });
 
   return (

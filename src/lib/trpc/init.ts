@@ -3,6 +3,7 @@ import { cache } from "react";
 import { TRPCError, initTRPC } from "@trpc/server";
 
 import { getSession } from "@/lib/auth";
+import { db } from "@/lib/db";
 
 const createTRPCContext = cache(async () => {
   return { userId: "user_123" };
@@ -24,7 +25,7 @@ const protectedProcedure = publicProcedure.use(async ({ ctx, next }) => {
     throw new TRPCError({ code: "UNAUTHORIZED", message: "Unauthorised" });
   }
 
-  return next({ ctx: { ...ctx, session } });
+  return next({ ctx: { ...ctx, session, db } });
 });
 
 export {

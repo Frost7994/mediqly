@@ -10,10 +10,10 @@ import { createTRPCContext } from "@trpc/tanstack-react-query";
 import { makeQueryClient } from "@/lib/trpc/query-client";
 import type { AppRouter } from "@/lib/trpc/routers/_app";
 
-export const { TRPCProvider, useTRPC } = createTRPCContext<AppRouter>();
+export const { TRPCProvider, useTRPC, useTRPCClient } = createTRPCContext<AppRouter>();
 
 let browserQueryClient: QueryClient;
-const getQueryClient = () => {
+export const getQueryClient = () => {
   if (typeof window === "undefined") {
     // Server: always make a new query client
     return makeQueryClient();
