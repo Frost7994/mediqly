@@ -1,4 +1,8 @@
+import { seedQuestions } from "./seeds";
+
 const main = async () => {
+  await seedQuestions();
+
   console.log("Running seed...");
 };
 

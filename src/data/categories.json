@@ -1,0 +1,154 @@
+[
+  {
+    "id": "a0bd4cf4-2b33-4979-8741-99dede909ad3",
+    "name": "diabetes"
+  },
+  {
+    "id": "59fc09aa-6343-4295-9ba2-a2f8d2e485b5",
+    "name": "infection control"
+  },
+  {
+    "id": "4863616a-a02e-42f8-8dcd-83210461fae4",
+    "name": "medication"
+  },
+  {
+    "id": "58317c42-50ad-4755-bf5e-d677b5a5f9e9",
+    "name": "miscellaneous"
+  },
+  {
+    "id": "c5b668a4-c4f2-4b87-87f8-3c90a09d7f7d",
+    "name": "obstetrics"
+  },
+  {
+    "id": "a91eb183-0281-4cb8-8baa-77e56a2ea7d5",
+    "name": "phecc and legalities"
+  },
+  {
+    "id": "c48d2e0e-e1a3-4a3e-a459-5ef6a778a92e",
+    "name": "red box mcq"
+  },
+  {
+    "id": "be93eea4-b269-4180-91b8-3b656898a18a",
+    "name": "scene assessment and patient assessment"
+  },
+  {
+    "id": "4a4f5d59-1544-4321-94b2-1d1ed0af4910",
+    "name": "the cell and chemical processes"
+  },
+  {
+    "id": "1657280a-e85c-4566-9b1d-768c6a18ae97",
+    "name": "seizure and shock"
+  },
+  {
+    "id": "6fc2aae8-36b6-4569-bee9-f91ebc60653b",
+    "name": "the cardiovascular system"
+  },
+  {
+    "id": "1e8b671e-731d-4b60-bcfa-66252aa7ec70",
+    "name": "the digestive system"
+  },
+  {
+    "id": "35b3d470-3407-4907-8d93-683bf2feef84",
+    "name": "the integumentary system"
+  },
+  {
+    "id": "95c5064f-3e34-46f7-b518-db40901a613b",
+    "name": "the urinary system"
+  },
+  {
+    "id": "674463ba-6e35-4493-88c1-06bd028577e7",
+    "name": "the nervous system"
+  },
+  {
+    "id": "9bd892aa-3df2-4118-b2a2-e94a46fb14d9",
+    "name": "the respiratory system"
+  },
+  {
+    "id": "028d31d6-487f-48db-b4a0-759dcd26b267",
+    "name": "the musculoskeletal system"
+  },
+  {
+    "id": "ee13abed-d589-4fe2-8b41-448e9175d0b8",
+    "name": "burns"
+  },
+  {
+    "id": "2d360f0a-c004-410b-83e0-1501b4eaefd0",
+    "name": "vital signs and monitoring"
+  },
+  {
+    "id": "6a6ae137-8b91-479e-9b4e-b574671bf569",
+    "name": "the endocrine system"
+  },
+  {
+    "id": "070652d1-5398-4c1e-8ab6-db0d0163b00e",
+    "name": "anatomy"
+  },
+  {
+    "id": "9640e8d0-602f-4d36-8578-5caaef5773b3",
+    "name": "the reproductive system"
+  },
+  {
+    "id": "ddacaa66-5835-4a21-944f-e26422c9c0b2",
+    "name": "paediatrics"
+  },
+  {
+    "id": "60a3b1a2-e6a8-4b85-9a1b-75b5dd2081c6",
+    "name": "trauma"
+  },
+  {
+    "id": "7df876e7-685a-4b9b-8058-4a65573dd5a8",
+    "name": "the circulatory system"
+  },
+  {
+    "id": "a670f3f2-fdb2-424f-9d57-e04ceb3514a8",
+    "name": "CPGs"
+  },
+  {
+    "id": "c60c7d48-a474-4c88-949d-6c8ce4baf87c",
+    "name": "sepsis"
+  },
+  {
+    "id": "251e8257-eed1-4211-8aaf-4561d46837ee",
+    "name": "mass casualty incident"
+  },
+  {
+    "id": "b5f2751d-54cd-499a-9a07-56e4753812de",
+    "name": "terminology"
+  },
+  {
+    "id": "e3be9925-ef10-41ad-8268-0957a02077ea",
+    "name": "toxicology"
+  },
+  {
+    "id": "af3aa5e6-7987-4c08-8a95-e57daab7d83f",
+    "name": "ophthalmology"
+  },
+  {
+    "id": "3e678732-39c0-401d-8618-e5ff03a90f8f",
+    "name": "geriatrics"
+  },
+  {
+    "id": "a885d063-572b-4648-b21e-9b35cdaf2144",
+    "name": "ENT"
+  },
+  {
+    "id": "0688e4fb-bd2d-4623-910e-902040e273e8",
+    "name": "gastroenterology"
+  },
+  {
+    "id": "06ab8007-c08c-4eed-ad06-e1193abaf481",
+    "name": "medical conditions"
+  },
+  {
+    "id": "b43ffd78-15f9-4c6b-a904-ce2698060545",
+    "name": "mnemonics"
+  },
+  {
+    "id": "766a1f8a-d618-4de3-9c64-65015c2059f0",
+    "name": "ECG"
+  },
+  {
+    "id": "96bb60eb-9326-4bb5-9abc-99ba84131bcb",
+    "name": "symptoms"
+  }
+]
