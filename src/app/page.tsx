@@ -1,6 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
+
+import { cn } from "@/utils";
+
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Page, PageContent, PageDescription, PageHeader, PageTitle } from "@/components/ui/page";
 
@@ -76,13 +80,18 @@ export default function HomePage() {
         <Container>
           <div className="space-y-4">
             <p>Welcome back, {session.user.name}!</p>
-            <Button
-              onClick={async () => {
-                await signOut({ fetchOptions: signOutFetchOptions });
-              }}
-            >
-              Sign out
-            </Button>
+            <div className="space-x-2">
+              <Button
+                onClick={async () => {
+                  await signOut({ fetchOptions: signOutFetchOptions });
+                }}
+              >
+                Sign out
+              </Button>
+              <Link className={cn(buttonVariants({ variant: "outline" }))} href="/quiz/setup">
+                Start a quiz
+              </Link>
+            </div>
           </div>
         </Container>
       </PageContent>
