@@ -1,12 +1,15 @@
 "use client";
 
-import { toast } from "@/utils";
-
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Page, PageContent, PageDescription, PageHeader, PageTitle } from "@/components/ui/page";
 
 import { signIn, signOut, signUp, useSession } from "@/lib/auth/client";
+import {
+  signInFetchOptions,
+  signOutFetchOptions,
+  signUpFetchOptions,
+} from "@/lib/auth/fetch-options";
 
 export default function HomePage() {
   // session destructure
@@ -33,15 +36,7 @@ export default function HomePage() {
                     await signIn.email({
                       email: "johndoe@example.com",
                       password: "Password1234!",
-                      fetchOptions: {
-                        onSuccess: () => {
-                          toast({ message: "Successfully signed in! Redirecting.." });
-                          //+ TODO: push the user here
-                        },
-                        onError: (ctx) => {
-                          toast({ message: ctx.error.message });
-                        },
-                      },
+                      fetchOptions: signInFetchOptions,
                     });
                   }}
                 >
@@ -54,15 +49,7 @@ export default function HomePage() {
                       name: "John Doe",
                       email: "johndoe@example.com",
                       password: "Password1234!",
-                      fetchOptions: {
-                        onSuccess: () => {
-                          toast({ message: "Successfully signed up! Redirecting.." });
-                          //+ TODO: push the user here
-                        },
-                        onError: (ctx) => {
-                          toast({ message: ctx.error.message });
-                        },
-                      },
+                      fetchOptions: signUpFetchOptions,
                     });
                   }}
                 >
@@ -91,16 +78,7 @@ export default function HomePage() {
             <p>Welcome back, {session.user.name}!</p>
             <Button
               onClick={async () => {
-                await signOut({
-                  fetchOptions: {
-                    onError: (ctx) => {
-                      toast({ message: ctx.error.message });
-                    },
-                    onSuccess: () => {
-                      toast({ message: "Successfully signed out! Redirecting.." });
-                    },
-                  },
-                });
+                await signOut({ fetchOptions: signOutFetchOptions });
               }}
             >
               Sign out
