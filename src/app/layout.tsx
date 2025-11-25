@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import { Providers } from "@/components/providers";
 
+import { NavbarThemeMenu } from "@/features/navigation/components/navbar-theme-menu";
+
 import { TRPCReactProvider } from "@/lib/trpc/client";
 
 import { cn } from "@/utils/cn";
@@ -42,6 +44,7 @@ export default function RootLayout({
           <Providers>
             <div className="flex h-12 items-center border-b px-4">
               <p>placeholder navbar</p>
+              <NavbarThemeMenu />
             </div>
             {children}
           </Providers>

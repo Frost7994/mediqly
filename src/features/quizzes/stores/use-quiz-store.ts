@@ -32,7 +32,7 @@ type Flag = {
 type Hint = {
   questionId: string;
   type: typeof NUDGE | typeof PROMPT;
-  optionIds: string[];
+  optionId: string;
 };
 
 type State = {
@@ -133,6 +133,17 @@ const useQuizStore = create<State & Actions>()(
         },
 
         handleAnswerClick: (optionId: string) => {
+          // check if a hint exists for the selected option
+          const hintExists = get().hints.some(
+            (hint) => hint.questionId === get().currentQuestion.id && hint.optionId === optionId
+          );
+
+          //  if hint exists, do not allow selecting the option
+          if (hintExists) {
+            toast({ message: "You cannot select an option that has been removed as a hint." });
+            return;
+          }
+
           // check if flag exists
           const flagIndex = get().flags.findIndex((f) => f.questionId === get().currentQuestion.id);
 
@@ -223,11 +234,8 @@ const useQuizStore = create<State & Actions>()(
 
           // get all hint ids for the current question
           const hintIds = get()
-            .hints.filter(
-              (hint) => hint.type === NUDGE && hint.questionId === get().currentQuestion.id
-            )
-            .map((hint) => hint.optionIds)
-            .flat();
+            .hints.filter((hint) => hint.questionId === get().currentQuestion.id)
+            .map((hint) => hint.optionId);
 
           // check if the question can be nudged any more
           if (hintIds.length >= 3) {
@@ -252,7 +260,7 @@ const useQuizStore = create<State & Actions>()(
             state.hints.push({
               questionId: state.currentQuestion.id,
               type: NUDGE,
-              optionIds: [randomOptionId],
+              optionId: randomOptionId,
             });
           });
 
@@ -271,18 +279,18 @@ const useQuizStore = create<State & Actions>()(
           }
 
           // check if user has any prompts left
-          if (get().hints.filter((hint) => hint.type === PROMPT).length >= NO_OF_PROMPTS) {
+          // x2 because each prompt gives two hints
+          if (get().hints.filter((hint) => hint.type === PROMPT).length >= NO_OF_PROMPTS * 2) {
             toast({ message: "You have used your prompts for this quiz." });
             return;
           }
 
+          console.log(get().hints.filter((hint) => hint.type === PROMPT).length);
+
           // get all hint ids for the current question
           const hintIds = get()
-            .hints.filter(
-              (hint) => hint.type === NUDGE && hint.questionId === get().currentQuestion.id
-            )
-            .map((hint) => hint.optionIds)
-            .flat();
+            .hints.filter((hint) => hint.questionId === get().currentQuestion.id)
+            .map((hint) => hint.optionId);
 
           // check if the question can be prompted any more
           if (hintIds.length > 1) {
@@ -304,10 +312,12 @@ const useQuizStore = create<State & Actions>()(
 
           // add the prompt hint to the store
           set((state) => {
-            state.hints.push({
-              questionId: state.currentQuestion.id,
-              type: PROMPT,
-              optionIds: selectedOptionIds,
+            selectedOptionIds.forEach((optionId) => {
+              state.hints.push({
+                questionId: state.currentQuestion.id,
+                type: PROMPT,
+                optionId,
+              });
             });
           });
 
